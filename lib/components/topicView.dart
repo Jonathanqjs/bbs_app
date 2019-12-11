@@ -6,17 +6,19 @@ class TopicView extends StatelessWidget {
   final String dateTime;
   final String blockName;
   final String title;
+  final Function onPressed;
   TopicView(
       {@required this.author,
       @required this.dateTime,
       @required this.title,
-      @required this.blockName})
+      @required this.blockName,
+      this.onPressed})
       : super();
   @override
   Widget build(BuildContext context) {
     return FlatButton(
       padding: EdgeInsets.zero,
-      onPressed: () {},
+      onPressed: this.onPressed ?? () {},
       child: Container(
           width: MediaQuery.of(context).size.width,
           constraints: BoxConstraints(minHeight: 80),
@@ -25,8 +27,8 @@ class TopicView extends StatelessWidget {
               border: Border(
                   bottom: BorderSide(
                       style: BorderStyle.solid,
-                      color: Colors.black45,
-                      width: 0.5))),
+                      color: Colors.grey,
+                      width: 0.3))),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: Column(
@@ -38,22 +40,30 @@ class TopicView extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Row(
                         children: <Widget>[
-                          Text(
-                            author,
-                            style: TextStyle(
-                                fontSize: 13, fontWeight: FontWeight.w400),
+                          Container(
+                            margin: EdgeInsets.only(right: 10),
+                            child: Icon(Icons.account_box,size: 25,),
                           ),
-                          Text(
-                            '$dateTime   评论10',
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w400),
-                          )
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                author,
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w400),
+                              ),
+                              Text(
+                                '$dateTime   评论10',
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w400),
+                              )
+                            ],
+                          ),
                         ],
                       ),
                       Container(
@@ -73,7 +83,7 @@ class TopicView extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: EdgeInsets.only(bottom: 10,left:5),
                   child: Text(
                     title,
                     textAlign: TextAlign.left,

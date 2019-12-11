@@ -50,6 +50,9 @@ class _TopicListPageState extends State<TopicListPage> {
                 blockName: 'fef',
                 dateTime: 'fef',
                 title: 'eff',
+                onPressed: (){
+                  Navigator.pushNamed(context,'topicContent');
+                },
               );
             },
           ),
@@ -60,7 +63,7 @@ class _TopicListPageState extends State<TopicListPage> {
           child: FloatingActionButton(
             child: Text('+',style: TextStyle(fontSize: 22),),
             onPressed: (){
-              Navigator.pushNamed(context, 'publishTopic');
+              Navigator.pushNamed(context, 'topicPublish');
             },
           ),
         )

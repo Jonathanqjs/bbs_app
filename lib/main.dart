@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget{
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primaryColor: Colors.white,
-        primarySwatch: Colors.brown
+        primarySwatch: Colors.blueGrey
       ),
       routes: router,
       initialRoute: '/',

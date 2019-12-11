@@ -68,7 +68,7 @@ class MyScaffold extends StatelessWidget {
           drawerScrimColor: drawerScrimColor,
           extendBody: extendBody,
           resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-          resizeToAvoidBottomPadding: resizeToAvoidBottomInset,
+          resizeToAvoidBottomPadding: resizeToAvoidBottomPadding,
         ));
   }
 }

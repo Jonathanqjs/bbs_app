@@ -44,7 +44,10 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         // the App.build method, and use it to set our appbar title.
         title: Text('wefaef'),
         bottom: TabBar(
+          isScrollable: tabs.length>4,
+          indicatorColor:Colors.black54,
           controller: _tabController,
+          unselectedLabelColor: Colors.grey,
           tabs: tabs.map((item)=>Tab(text: item)).toList(),
           indicator: UnderlineTabIndicator(),
         ),
