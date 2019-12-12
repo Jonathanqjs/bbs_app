@@ -23,7 +23,7 @@ class _TopicPublishPageState extends State<TopicPublishPage> {
           title: Text('创作新主题'),
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.add_circle_outline),
+              icon: Icon(Icons.publish),
               onPressed: () {},
             )
           ],

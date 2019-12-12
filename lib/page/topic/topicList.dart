@@ -22,7 +22,9 @@ class _TopicListPageState extends State<TopicListPage> {
           enablePullDown: true,
           enablePullUp: true,
           controller: _refreshController,
-          header: WaterDropHeader(),
+          header: WaterDropMaterialHeader(
+            backgroundColor: Colors.black12,
+          ),
           footer: CustomFooter(
             builder: (BuildContext context, LoadStatus mode) {
               Widget body;
@@ -61,7 +63,7 @@ class _TopicListPageState extends State<TopicListPage> {
           bottom: 20,
           right: 20,
           child: FloatingActionButton(
-            child: Text('+',style: TextStyle(fontSize: 22),),
+            child: Icon(Icons.edit,size: 25,),
             onPressed: (){
               Navigator.pushNamed(context, 'topicPublish');
             },

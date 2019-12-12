@@ -1,6 +1,7 @@
 import 'package:bbs_app/components/myScaffold.dart';
 import 'package:bbs_app/page/topic/topicList.dart';
 import 'package:flutter/material.dart';
+
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
 
@@ -19,15 +20,40 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   TabController _tabController;
-  List tabs = ['全部','第一幅'];
+  List tabs = ['全部', '第一幅'];
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _tabController = TabController(length: tabs.length, vsync: this);
+  }
+
+  drawButton() {
+    return FlatButton(
+      onPressed: () {},
+      child: Container(
+        height: 50,
+        child: Row(
+          children: <Widget>[
+            Icon(
+              Icons.account_circle,
+              size: 30,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 10),
+              child: Text(
+                '登录',
+                style: TextStyle(fontSize: 15),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 
   @override
@@ -44,18 +70,28 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         // the App.build method, and use it to set our appbar title.
         title: Text('wefaef'),
         bottom: TabBar(
-          isScrollable: tabs.length>4,
-          indicatorColor:Colors.black54,
+          isScrollable: tabs.length > 4,
+          indicator: UnderlineTabIndicator(
+              borderSide: BorderSide(color: Colors.black54, width: 2),
+              insets: EdgeInsets.symmetric(horizontal: 40)),
           controller: _tabController,
           unselectedLabelColor: Colors.grey,
-          tabs: tabs.map((item)=>Tab(text: item)).toList(),
-          indicator: UnderlineTabIndicator(),
+          tabs: tabs.map((item) => Tab(text: item)).toList(),
         ),
       ),
-      drawer:Drawer(),
+      drawer: Drawer(
+        child: SafeArea(
+          child: Container(
+            padding: EdgeInsets.only(top: 30),
+            child: Column(
+              children: <Widget>[drawButton(),drawButton()],
+            ),
+          ),
+        ),
+      ),
       body: TabBarView(
         controller: _tabController,
-        children: tabs.map((item)=>TopicListPage(item)).toList(),
+        children: tabs.map((item) => TopicListPage(item)).toList(),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
